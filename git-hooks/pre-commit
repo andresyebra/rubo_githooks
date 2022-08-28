@@ -1,0 +1,32 @@
+#!/bin/sh
+REGEX='[0-9]+ offenses'
+#REGEX='no offenses'
+
+RED="\033[1;31m"
+GREEN="\033[1;32m"
+NC="\033[0m"
+
+function display_text_message() {
+  text=$1
+  echo "${text}\n"
+}
+
+
+rubocop=$(rubocop)
+echo $rubocop
+
+rubocop=$(rubocop | tail -1)
+echo $rubocop
+
+echo "$rubocop" | grep -q REGEX
+
+if [[ $? -eq 0 ]]; then
+  echo -e "[\e[32m31mRubocop OK\e[0m] $rubocop"
+    display_text_message "${RED} ❌ $2 errors have occurred ${NC}"
+else
+  echo -e "[\e[32m31mRubocop OK\e[0m] $rubocop"
+    display_text_message "${GREEN} ✔ $2 Rubocop OK: $rubocop ${NC}"
+    exit 1
+fi
+
+#echo $rubocop
