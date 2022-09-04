@@ -1,6 +1,5 @@
 #!/bin/sh
 REGEX='[0-9]+ offenses'
-#REGEX='no offenses'
 
 RED="\033[1;31m"
 GREEN="\033[1;32m"
@@ -28,5 +27,3 @@ else
     display_text_message "${GREEN} ✔ $2 Rubocop OK: $rubocop ${NC}"
     exit 1
 fi
-
-#echo $rubocop
