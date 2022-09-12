@@ -20,10 +20,8 @@ echo $rubocop
 echo "$rubocop" | grep -q REGEX
 
 if [[ $? -eq 0 ]]; then
-  echo -e "[\e[32m31mRubocop OK\e[0m] $rubocop"
-    display_text_message "${RED} ❌ $2 errors have occurred ${NC}"
+    echo "${RED} ❌ $2 errors have occurred ${NC} \n"
 else
-  echo -e "[\e[32m31mRubocop OK\e[0m] $rubocop"
-    display_text_message "${GREEN} ✔ $2 Rubocop OK: $rubocop ${NC}"
+    echo "${GREEN} ✔ $2 Rubocop OK: $rubocop ${NC} \n"
     exit 1
 fi
